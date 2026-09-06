@@ -1,0 +1,9 @@
+{
+  "appId": "com.example.aperture",
+  "appName": "Aperture",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "android": {
+    "allowMixedContent": false
+  }
+}
