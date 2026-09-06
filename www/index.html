@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+<meta name="theme-color" content="#0A0A0A" />
+<title>Aperture</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="app">
+
+    <!-- Viewfinder -->
+    <div id="viewfinder">
+      <video id="video" autoplay playsinline muted></video>
+      <canvas id="canvas" hidden></canvas>
+
+      <div id="grid" class="hidden" aria-hidden="true">
+        <div class="grid-line v"></div>
+        <div class="grid-line v"></div>
+        <div class="grid-line h"></div>
+        <div class="grid-line h"></div>
+      </div>
+
+      <div id="flash-overlay"></div>
+
+      <div id="permission-screen" class="hidden">
+        <p id="permission-text">Aperture needs camera access to work.</p>
+        <button id="retry-btn" type="button">Allow camera</button>
+      </div>
+    </div>
+
+    <!-- Top bar -->
+    <div id="top-bar">
+      <button id="grid-toggle" class="chrome-btn" type="button" aria-label="Toggle grid">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M3 8h18M3 16h18M8 3v18M16 3v18" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>
+      </button>
+
+      <div id="counter" class="mono">000</div>
+
+      <button id="flash-toggle" class="chrome-btn" type="button" aria-label="Toggle flash overlay">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <!-- Bottom bar -->
+    <div id="bottom-bar">
+      <button id="last-shot" class="thumb-btn" type="button" aria-label="View last photo">
+        <img id="last-shot-img" alt="" hidden />
+      </button>
+
+      <button id="shutter" class="shutter-btn" type="button" aria-label="Take photo">
+        <span class="shutter-ring"></span>
+        <span class="shutter-core"></span>
+      </button>
+
+      <button id="flip-camera" class="chrome-btn" type="button" aria-label="Flip camera">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M17 2l4 4-4 4M7 22l-4-4 4-4M3 12a9 9 0 0 1 15-6.7M21 12a9 9 0 0 1-15 6.7" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <!-- Filmstrip / gallery overlay -->
+    <div id="gallery" class="hidden">
+      <div id="gallery-header">
+        <span class="mono" id="gallery-count">0 shots</span>
+        <button id="gallery-close" class="chrome-btn" type="button" aria-label="Close gallery">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 5l14 14M19 5 5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div id="gallery-grid"></div>
+      <div id="gallery-empty" class="hidden">No shots yet</div>
+    </div>
+
+    <!-- Single photo viewer -->
+    <div id="viewer" class="hidden">
+      <img id="viewer-img" alt="Captured photo" />
+      <div id="viewer-bar">
+        <button id="viewer-back" class="chrome-btn" type="button" aria-label="Back">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+        </button>
+        <span class="mono" id="viewer-index"></span>
+        <button id="viewer-download" class="chrome-btn" type="button" aria-label="Download photo">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 21h16" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+        </button>
+        <button id="viewer-delete" class="chrome-btn" type="button" aria-label="Delete photo">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
